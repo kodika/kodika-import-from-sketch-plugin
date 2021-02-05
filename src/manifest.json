@@ -1,6 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
-  "icon": "icon.png",
+  "name": "Export to Kodika.io Studio",
+  "icon": "kodika_logo.png",
+  "identifier": "io.kodika.kodika.plugins.sketch-kodika-plugin",
+  "author": "Kodika Team",
+  "authorEmail": "team@kodika.io",
   "commands": [
     {
       "name": "my-command",
