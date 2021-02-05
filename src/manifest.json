@@ -9,7 +9,7 @@
     {
       "name": "my-command",
       "identifier": "sketch-kodika-plugin.my-command-identifier",
-      "script": "./my-command.js"
+      "script": "../dist/my-command.js"
     }
   ],
   "menu": {

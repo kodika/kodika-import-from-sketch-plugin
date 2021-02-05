@@ -15,13 +15,16 @@
     "sketch-assets-file": "sketch-assets/icons.sketch"
   },
   "scripts": {
-    "build": "skpm-build",
-    "watch": "skpm-build --watch",
-    "start": "skpm-build --watch --run",
+    "build": "tsc && skpm-build",
+    "watch": "tsc --watch & skpm-build --watch",
+    "start": "tsc --watch & skpm-build --watch --run",
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.7.0"
+    "@skpm/builder": "^0.7.0",
+    "@types/node": "^14.14.25",
+    "sketch-types": "^0.4.3",
+    "typescript": "^4.1.3"
   },
   "author": "Kodika Team <team@kodika.io>"
 }
