@@ -7,15 +7,16 @@
   "authorEmail": "team@kodika.io",
   "commands": [
     {
-      "name": "my-command",
-      "identifier": "sketch-kodika-plugin.my-command-identifier",
-      "script": "../dist/my-command.js"
+      "name": "Copy Selected Elements",
+      "identifier": "sketch-kodika-plugin.copy-selected",
+      "script": "../dist/copy-selected.js",
+      "shortcut": "ctrl cmd k"
     }
   ],
   "menu": {
-    "title": "sketch-kodika-plugin",
+    "title": "📲 Export to Kodika.io",
     "items": [
-      "sketch-kodika-plugin.my-command-identifier"
+      "sketch-kodika-plugin.copy-selected"
     ]
   }
 }

@@ -42,7 +42,7 @@ export default function() {
   })
 
   jsonsArray = selectedLayers.map( l => l.toJSON() );
-  
+
   let finalJSON = {
     "plugin": "Sketch",
     "version": 70.3,
@@ -57,7 +57,7 @@ export default function() {
   pasteboard.setString_forType(JSON.stringify(finalJSON), "io.kodika.kodika.plugins.sketch" as unknown as cocoascript.NSString);
 
   selectedLayers.forEach( l => l.remove() );
-  UI.message("Copy successful!")
+  UI.message("Elements copied successfully! Paste them in the Kodika Design Editor (CMD+V).")
 }
 
 function getDuplicatedLayers(layers: dom.AllLayers[]): dom.AllLayers[] {
