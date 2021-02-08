@@ -63,11 +63,20 @@ export default function() {
 function getDuplicatedLayers(layers: dom.AllLayers[]): dom.AllLayers[] {
   let detachedLayers: dom.AllLayers[] = layers.map(function(layer) {
     let duplicatedLayer = layer.duplicate()
-    if (duplicatedLayer.type == 'SymbolInstance') {
-      return duplicatedLayer.detach({ recursively: true })!; //TODO: Check if null
+    if (duplicatedLayer.type === dom.Types.SymbolInstance) {
+      let detachedLayer = duplicatedLayer.detach({ recursively: true });
+      duplicatedLayer.remove();
+      return detachedLayer;
+    }else if (duplicatedLayer.type === dom.Types.SymbolMaster) {
+      let symbolInstance = duplicatedLayer.createNewInstance();
+      sketch.Document.getSelectedDocument()!.selectedPage.layers.push(symbolInstance);
+      let detachedLayer = symbolInstance.detach({ recursively: true });
+      duplicatedLayer.remove()
+      symbolInstance.remove()
+      return detachedLayer
     }
     return duplicatedLayer;
-  });
+  }).filter(Boolean) as dom.AllLayers[];
   detachedLayers.forEach((layer) => {
     if ('layers' in layer) {
       layer.layers = getDuplicatedLayers(layer.layers) as dom.ChildLayer[]
@@ -77,7 +86,6 @@ function getDuplicatedLayers(layers: dom.AllLayers[]): dom.AllLayers[] {
 }
 
 function clearHotSpots(layers: dom.AllLayers[]): AllSupportedLayers[] {
-  //TODO: Check what happens if we copy SymbolMaster
   let cleanLayers = layers.filter( l => l.type !== 'HotSpot')
   cleanLayers.forEach((layer) => {
     if ('layers' in layer) {
