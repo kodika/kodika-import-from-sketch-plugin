@@ -78,8 +78,10 @@ function getDuplicatedLayers(layers: dom.AllLayers[]): dom.AllLayers[] {
     return duplicatedLayer;
   }).filter(Boolean) as dom.AllLayers[];
   detachedLayers.forEach((layer) => {
-    if ('layers' in layer) {
-      layer.layers = getDuplicatedLayers(layer.layers) as dom.ChildLayer[]
+    if (layer.type !== dom.Types.Shape) {
+      if ('layers' in layer) {
+        layer.layers = getDuplicatedLayers(layer.layers) as dom.ChildLayer[]
+      }
     }
   });
   return detachedLayers;
@@ -88,8 +90,10 @@ function getDuplicatedLayers(layers: dom.AllLayers[]): dom.AllLayers[] {
 function clearHotSpots(layers: dom.AllLayers[]): AllSupportedLayers[] {
   let cleanLayers = layers.filter( l => l.type !== 'HotSpot')
   cleanLayers.forEach((layer) => {
-    if ('layers' in layer) {
-      layer.layers = clearHotSpots(layer.layers) as dom.ChildLayer[]
+    if (layer.type !== dom.Types.Shape) {
+      if ('layers' in layer) {
+        layer.layers = clearHotSpots(layer.layers) as dom.ChildLayer[]
+      }
     }
   });
   return cleanLayers as AllSupportedLayers[]
