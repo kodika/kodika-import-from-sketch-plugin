@@ -1,10 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
   "name": "Export to Kodika.io Studio",
+  "description": "Export your designs to Kodika.io No Code App Builder and create your iOS apps with Drag and Drop!",
   "icon": "kodika_logo.png",
   "identifier": "io.kodika.kodika.plugins.sketch-kodika-plugin",
   "author": "Kodika Team",
   "authorEmail": "team@kodika.io",
+  "homepage":"https://docs.kodika.io/integrations-plugins/import-from-sketch",
   "commands": [
     {
       "name": "Copy Selected Elements",
